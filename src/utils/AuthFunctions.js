@@ -16,6 +16,8 @@ export default {
 
             await setUsuarioApp(res.data);
 
+            localStorage.setItem("usuario", JSON.stringify(res.data));
+
             history.push("/");
         } catch (e) {
             alert(e.response.data.error || "Ocorreu um erro ao cadastrar o usuário!");
@@ -42,5 +44,11 @@ export default {
         } catch (e) {
             alert(e.response.data.error || "Ocorreu um erro ao cadastrar o usuário!");
         }
+    },
+
+    async twitterVinculado(usuario, setUsuarioApp) {
+        const retorno = await api.get(`/usuario/${usuario._id}`);
+        setUsuarioApp(retorno.data);
+        localStorage.setItem("usuario", JSON.stringify(retorno.data));
     }
 }

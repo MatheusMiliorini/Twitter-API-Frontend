@@ -9,16 +9,17 @@ import {
 
 import './App.css';
 import PrivateRoute from './PrivateRoute';
+import TimeLine from './TimeLine';
 import FormLoginCadastro from './FormLoginCadastro';
 import AuthFunctions from './utils/AuthFunctions';
 
 function App() {
-  const [usuario, setUsuario] = useState({});
+  const [usuario, setUsuario] = useState(JSON.parse(localStorage.getItem("usuario")) || {});
 
   return (
     <Router>
       <Switch>
-        <Route path="/login">
+        <Route exact path="/login">
           <FormLoginCadastro
             txtBtn="Login"
             outroLink={{ url: "/cadastro", nome: "Não tenho conta" }}
@@ -26,7 +27,7 @@ function App() {
             setUsuarioApp={setUsuario} />
         </Route>
 
-        <Route path="/cadastro">
+        <Route exact path="/cadastro">
           <FormLoginCadastro
             txtBtn="Cadastrar"
             outroLink={{ url: "/login", nome: "Já tenho conta" }}
@@ -34,13 +35,17 @@ function App() {
             setUsuarioApp={setUsuario} />
         </Route>
 
-        <Route path="/" render={() => <Redirect to={usuario._id ? "/timeline" : "/login"} />} />
-
-        <PrivateRoute path="/timeline" usuario={usuario}>
-          <div>
-            Pão :)
-          </div>
+        <PrivateRoute exact path="/timeline" usuario={usuario}>
+          <TimeLine
+            setUsuarioApp={setUsuario}
+            usuario={usuario} />
         </PrivateRoute>
+
+        <Route
+          exact path="/"
+          render={() => <Redirect to={usuario._id ? "/timeline" : "/login"} />} />
+
+        <Route path="*" render={() => <p>Página não encontrada!</p>} />
       </Switch>
     </Router>
   );

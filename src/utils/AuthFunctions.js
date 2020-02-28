@@ -50,5 +50,15 @@ export default {
         const retorno = await api.get(`/usuario/${usuario._id}`);
         setUsuarioApp(retorno.data);
         localStorage.setItem("usuario", JSON.stringify(retorno.data));
-    }
+    },
+
+    async getTweets(usuario) {
+        const { data } = await api.get("/tweets", {
+            params: {
+                _id: usuario._id
+            }
+        });
+
+        return data;
+    },
 }

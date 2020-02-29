@@ -12,8 +12,8 @@ function Tweet({ tweet, rt, fav }) {
                 <span className="twitterUsername">{tweet.user.name} <span className="arroba">@{tweet.user.screen_name}</span></span>
                 <span className="tweetText">{tweet.text}</span>
                 <div className="tweetFooter">
-                    <span><i onClick={rt} className={`fas fa-retweet hover hover-green ${tweet.retweeted ? "bold" : ""}`}></i> {tweet.retweet_count}</span>
-                    <span><i onClick={(e) => fav(tweet, e)} className={`${tweet.favorited ? "fas" : "far"} hover hover-red fa-heart`} ></i> {tweet.favorite_count}</span>
+                    <span><i onClick={() => rt(tweet)} className={`fas fa-retweet hover hover-green ${tweet.retweeted ? "green" : ""}`}></i> {tweet.retweet_count}</span>
+                    <span><i onClick={(e) => fav(tweet, e)} className={`${tweet.favorited ? "fas red" : "far"} hover hover-red fa-heart`} ></i> {tweet.favorite_count}</span>
                 </div>
             </div>
         </div>

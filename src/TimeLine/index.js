@@ -41,8 +41,34 @@ function TimeLine({ usuario, setUsuarioApp }) {
       });
   }
 
-  function rt() {
+  async function rt(tweet) {
+    try {
+      const endpoint = tweet.retweeted ? "/unretweet" : "/retweet";
 
+      const { data } = await api.post(`${BACKEND_URL}${endpoint}`, {
+        _id: usuario._id,
+        id: tweet.id_str
+      });
+
+      if (data.errors) {
+        alert(`Ocorreu um erro: "${data.errors[0].message}"`);
+      } else {
+        // Data é o tweet retornado atualizado
+        const novosTweets = tweets.map(_tweet => {
+          if (tweet.id_str === _tweet.id_str) {
+            // Assim porque a API é confusa e não retona o tweet certo
+            _tweet.retweeted = !_tweet.retweeted;
+            _tweet.retweet_count += _tweet.retweeted ? 1 : -1;
+          }
+          return _tweet;
+        });
+
+        setTweets(novosTweets);
+        localStorage.setItem("tweets", JSON.stringify(novosTweets));
+      }
+    } catch (e) {
+      alert("Ocorreu um erro!");
+    }
   }
 
   async function fav(tweet) {
@@ -58,11 +84,11 @@ function TimeLine({ usuario, setUsuarioApp }) {
         alert(`Ocorreu um erro: "${data.errors[0].message}"`);
       } else {
         // Data é o tweet retornado atualizado
-        const novosTweets = tweets.map(tweet => {
-          if (tweet.id_str === data.id_str)
+        const novosTweets = tweets.map(_tweet => {
+          if (_tweet.id_str === data.id_str)
             return data;
           else
-            return tweet;
+            return _tweet;
         });
 
         setTweets(novosTweets);

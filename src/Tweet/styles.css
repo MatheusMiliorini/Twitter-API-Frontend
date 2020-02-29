@@ -38,6 +38,15 @@
 .hover-green:hover {
   color: green;
 }
+
+.green {
+  color: green;
+}
+
+.red {
+  color: red;
+}
+
 .hover-red:hover {
   color: red;
 }

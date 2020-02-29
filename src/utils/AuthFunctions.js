@@ -53,12 +53,16 @@ export default {
     },
 
     async getTweets(usuario) {
-        const { data } = await api.get("/tweets", {
-            params: {
-                _id: usuario._id
-            }
-        });
+        try {
+            const { data } = await api.get("/tweets", {
+                params: {
+                    _id: usuario._id
+                }
+            });
 
-        return data;
+            return data;
+        } catch (e) {
+            throw e.response.data;
+        }
     },
 }

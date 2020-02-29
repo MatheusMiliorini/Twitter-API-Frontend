@@ -1,11 +1,22 @@
 .wrapperTwitterButton {
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #359fd2;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #359fd2;
 }
 
-#root {
-    padding: 0 1rem;
+.divBtnReloadFeed {
+  text-align: center;
+}
+
+.btnReloadFeed {
+  justify-self: center;
+}
+
+.btnReloadFeed i {
+  color: indigo;
+  font-size: 1.5rem;
+  margin-top: 0.3rem;
+  margin-bottom: 0.3rem;
 }

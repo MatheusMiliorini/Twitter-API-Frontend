@@ -1,10 +1,50 @@
 .tweet {
-    border: 1px solid lightgray;
-    margin-bottom: 0.5rem;
-    border-radius: 5px;
-    padding: 10px;
+  border-bottom: 1px solid lightgray;
+  margin-bottom: 0.5rem;
+  border-radius: 5px;
+  padding: 10px;
+  display: grid;
+  grid-template-columns: 1fr 6fr;
+  font-size: 0.9rem;
+}
+
+.divProfileImg {
+  justify-self: center;
+}
+
+.twitterUsername {
+  display: block;
+  font-weight: bold;
+}
+
+.twitterUsername .arroba {
+  color: gray;
+  font-weight: lighter;
+}
+
+.tweet img {
+  border-radius: 50%;
+}
+
+.fa.bold {
+  font-weight: bold;
+}
+
+.hover:hover {
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.hover-green:hover {
+  color: green;
+}
+.hover-red:hover {
+  color: red;
 }
 
 .tweetFooter {
-
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  color: lightgray;
+  font-weight: lighter;
 }

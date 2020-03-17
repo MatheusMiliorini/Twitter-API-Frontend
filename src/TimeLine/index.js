@@ -4,6 +4,7 @@ import AuthFunctions from '../utils/AuthFunctions';
 import './styles.css';
 import Tweet from '../Tweet';
 import api from '../utils/api';
+import { Link } from 'react-router-dom';
 
 function TimeLine({ usuario, setUsuarioApp }) {
   const [saiuParaLogin, setSaiuParaLogin] = useState(false);
@@ -103,6 +104,7 @@ function TimeLine({ usuario, setUsuarioApp }) {
     <>
       {usuario.user_id && !tweets.errors &&
         <>
+          {/* Botão de reload */}
           <div className="divBtnReloadFeed">
             <button
               className="btn btnReloadFeed"
@@ -118,6 +120,15 @@ function TimeLine({ usuario, setUsuarioApp }) {
             tweet={tweet}
             rt={rt}
             fav={fav} />)}
+
+          {/* Botão de criar tweet */}
+          <Link
+            to="/createTweet"
+            className="btnTweet">
+            <button>
+              <i className="fas fa-feather-alt"></i> +
+            </button>
+          </Link>
         </>
       }
 

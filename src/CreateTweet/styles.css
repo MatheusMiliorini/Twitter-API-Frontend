@@ -1,0 +1,31 @@
+.barraSuperior {
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+  border-bottom: 1px lightgray solid;
+}
+
+.barraSuperior button {
+  margin-left: auto;
+  border: none;
+  background: lightblue;
+  border-radius: 30px;
+  padding: 0 1rem;
+  font-weight: bold;
+  color: white;
+}
+
+.barraSuperior button.habilitado {
+  background-color: #1b60fb;
+}
+
+.textAreaTweet {
+    border: none;
+    resize: none;
+    width: 100%;
+}
+
+.textAreaTweet:focus {
+    outline: none;
+}

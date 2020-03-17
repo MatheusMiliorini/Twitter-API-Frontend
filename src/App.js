@@ -10,6 +10,7 @@ import {
 import './App.css';
 import PrivateRoute from './PrivateRoute';
 import TimeLine from './TimeLine';
+import CreateTweet from './CreateTweet';
 import FormLoginCadastro from './FormLoginCadastro';
 import AuthFunctions from './utils/AuthFunctions';
 
@@ -38,6 +39,11 @@ function App() {
         <PrivateRoute exact path="/timeline" usuario={usuario}>
           <TimeLine
             setUsuarioApp={setUsuario}
+            usuario={usuario} />
+        </PrivateRoute>
+
+        <PrivateRoute exact path="/createTweet" usuario={usuario}>
+          <CreateTweet
             usuario={usuario} />
         </PrivateRoute>
 

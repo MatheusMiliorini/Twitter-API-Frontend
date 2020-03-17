@@ -1,2 +1,2 @@
-export const BACKEND_URL = "http://localhost:3333";
+export const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 export const TWITTER_LOGIN_BUTTON = "https://cdn.cms-twdigitalassets.com/content/dam/developer-twitter/icons/sign-in-with-twitter-gray-png-img-fullhd-medium.png.img.fullhd.medium.png";

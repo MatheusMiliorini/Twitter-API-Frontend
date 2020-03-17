@@ -10,21 +10,17 @@ function TimeLine({ usuario, setUsuarioApp }) {
   const [saiuParaLogin, setSaiuParaLogin] = useState(false);
   const [tweets, setTweets] = useState(JSON.parse(localStorage.getItem("tweets")) || []);
 
+  // Login
   useEffect(function () {
-    // Login
-    window.addEventListener("focus", async function () {
-      if (saiuParaLogin) {
-        // Essa função sozinha já seta o state e recarrega essa página com os tweets
+    if (saiuParaLogin) {
+      window.addEventListener("focus", async function () {
         await AuthFunctions.twitterVinculado(usuario, setUsuarioApp);
         setSaiuParaLogin(false);
-      }
-    });
-
-    // Carrega os tweets
-    if (usuario.user_id && (tweets.length === 0 || tweets.errors)) {
-      atualizaFeed();
+        atualizaFeed();
+      });
     }
-  }, []);
+  }, [saiuParaLogin]);
+
 
   function atualizaFeed() {
     AuthFunctions.getTweets(usuario)

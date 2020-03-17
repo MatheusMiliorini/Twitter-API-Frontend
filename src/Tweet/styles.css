@@ -57,3 +57,8 @@
   color: lightgray;
   font-weight: lighter;
 }
+
+i.delete {
+  color: red;
+  cursor: pointer;
+}

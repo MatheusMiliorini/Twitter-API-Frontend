@@ -100,6 +100,14 @@ function TimeLine({ usuario, setUsuarioApp }) {
     }
   }
 
+  // Deleta tweet
+  async function del(tweet) {
+    const { id_str } = tweet;
+    const res = await api.delete(`/tweet/${usuario._id}/${id_str}`);
+    if (res.status === 200)
+      atualizaFeed();
+  }
+
   return (
     <>
       {usuario.user_id && !tweets.errors &&
@@ -119,7 +127,8 @@ function TimeLine({ usuario, setUsuarioApp }) {
             key={i}
             tweet={tweet}
             rt={rt}
-            fav={fav} />)}
+            fav={fav}
+            del={del} />)}
 
           {/* Botão de criar tweet */}
           <Link
